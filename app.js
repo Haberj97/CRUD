@@ -8,6 +8,9 @@ const express = require('express')
 const app = express()
 const PORT = 8080 ;
 
+//importation
+require('./models/DataBase')
+
 //Function Section 
 app.listen(PORT, function(req, res) {
     console.log("Server connected")
