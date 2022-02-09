@@ -10,12 +10,6 @@ var objectSchema = mongoose.Schema({
     description : {
         type : String
     },
-    createdBy : {
-        type : String
-    },
-    modifiedBy : {
-        type : String
-    },
     creationDate : {
         type : Date,
         default : Date.now()
