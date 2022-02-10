@@ -5,7 +5,6 @@ const Object = require('../models/Object')
 //create
 router.post('/postObject', function (req, res) {
     // i will need to check how to use multer for pictures .
-    console.log(req.body)
     const { title ,description } = req.body
     if(!title || !description)
     {
