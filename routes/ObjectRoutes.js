@@ -33,5 +33,16 @@ router.get('/getObject',function (req, res) {
     })
 })
 
+//delete
+router.delete('/deleteObject/:id',function (req, res) {
+    var deleteQuery = { _id : req.params.id } 
+    Object.findByIdAndDelete(deleteQuery).then(resData => { 
+        res.json({
+            message : "Post Deleted"
+        })
+    }).catch((err) => {
+        console.log(err)
+    })
+})
 
 module.exports = router
