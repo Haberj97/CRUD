@@ -9,16 +9,16 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <nuxt-link to="/"><a class="nav-link active" aria-current="page">Create Object</a></nuxt-link>
                         </li>
                         <li class="nav-item">
-                        <a class="nav-link" href="#">Features</a>
+                        <nuxt-link to="/allObject"><a class="nav-link active" >All Objects</a></nuxt-link>
                         </li>
                         <li class="nav-item">
-                        <a class="nav-link" href="#">Pricing</a>
+                        <a class="nav-link active" href="#">Edit page</a>
                         </li>
                         <li class="nav-item">
-                        <a class="nav-link">Disabled</a> 
+                        <a class="nav-link">LogIn</a> 
                         </li>
                     </ul>
                 </div>

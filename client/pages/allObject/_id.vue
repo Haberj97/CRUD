@@ -1,6 +1,6 @@
 <template>
   <div class="container card objectPostDesign">
-    <h1>Create an Object post</h1>
+    <h1>Edit an Object post</h1>
     <div class="mb-3">
       <label for="title" class="form-label">Post Title</label>
       <input 
@@ -25,42 +25,8 @@
     </div>
     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
       <nuxt-link to="/allObject">
-        <button type="button" @click = "addObject" class="btn btn-outline-primary btn-lg">Submit</button>
+        <button type="button" @click = "addObject" class="btn btn-outline-primary btn-lg">Edit</button>
       </nuxt-link>
     </div>
   </div>
 </template>
-<script>
-import axios from "axios";
-export default {
-  data() {
-    return {
-      obj: {
-        title: "",
-        description: ""
-      }
-    };
-  },
-  methods: {
-    
-    async addObject() {
-      await axios
-        .post("http://localhost:8080/postObject", this.obj)
-        .then(res => {
-          console.log(res);
-        })
-        .catch(err => {
-          console.log(err);
-        });
-    }
-    
-  },
-  
-};
-</script>
-<style scoped>
-  .objectPostDesign {
-    margin-top: 20px;
-    padding : 20px;
-  }
-</style>
