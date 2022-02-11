@@ -2,33 +2,34 @@
     <div class="container card main_container">
         <div class="row">
             <div class="col-md-10">
-                <h2>All Object</h2>
+                <h2>All Objects</h2>
             </div>
             <div class="col-md-2">
                 <nuxt-link to="/">
                     <button type="button" class="btn btn-success">
-                        Create Post
+                        Create Object
                     </button>
                 </nuxt-link>
             </div>
         </div>
-        <div class ="row" v-for="objData in obj" :key="objData.id">
-            <div class="col-md-9 card each_item">
-                <div>
-                    <h5>{{objData.title}}</h5>
-                    <p>{{objData.description}}</p>
-                </div>
-            </div>
-            <div class="col-md-2 card each_item">
-                <div>
-                        <button v-on:click="deleteObject(objData._id)" type="button" class="btn btn-outline-primary">
-                        Delete
-                        </button>
-                        <nuxt-link :to="'/allpost/' + objData._id">
-                            <button type="button" class="btn btn-danger">
-                                Edit
+        <div class="catalog">
+            <div class = "eachObject" v-for="objData in obj" :key="objData.id">
+                <div class="card" style="width: 18rem;">
+                    <img src="" class="card-img-top" alt="image">
+                    <div class="card-body body_card">
+                        <h5 class="card-title">{{objData.title}}</h5>
+                        <p class="card-text" >{{objData.description.substring(0, 100)}}</p>
+                        <div>
+                            <button v-on:click="deleteObject(objData._id)" type="button" class="btn btn-danger">
+                            Delete
                             </button>
-                        </nuxt-link>
+                            <nuxt-link :to="'/allObject/'+objData._id">
+                                <button type="button" class="btn btn-outline-primary">
+                                Edit
+                                </button>
+                            </nuxt-link>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -76,14 +77,32 @@ export default{
 <style scoped>
 .main_container {
   padding: 50px;
-  margin-top: 30px;
+  margin-top: 50px;
+
 }
-.each_item {
-  margin: 5px;
+.eachObject {
+    margin: 0px auto; /*2*/
+    background-color: white; /*3*/
+    box-shadow: 0px 5px 20px #999; /*4*/
+    height: 400px;
+    display: flex;
+    align-items: justify;
+    border-radius: 15px;
 }
-.each_item:hover {
+.eachObject:hover {
   cursor: pointer;
   -webkit-box-shadow: 3px 10px 15px -1px rgba(0, 0, 0, 0.46);
   box-shadow: 3px 10px 15px -1px rgba(0, 0, 0, 0.46);
+}
+.catalog {
+    display: flex;
+    flex-wrap: wrap;
+    gap : 50px;
+    justify-content: center;
+}
+.body_card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
 }
 </style>

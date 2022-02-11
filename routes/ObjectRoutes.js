@@ -1,4 +1,5 @@
 const express = require('express')
+const { route } = require('express/lib/application')
 const router = express.Router()
 const Object = require('../models/Object')
 
@@ -25,9 +26,38 @@ router.post('/postObject', function (req, res) {
 //read
 router.get('/getObject',function (req, res) {
     Object.find({})
-    .sort({creationDate :'DESC'}).then(resData => {
+    .sort({creationDate :'ASC'}).then(resData => {
         res.json(resData)
     }).catch((err)=>{
+        console.log(err)
+    })
+})
+
+//findOne  
+router.get('/findOne/:id',function (req, res) {
+    var Query = { _id: req.params.id }
+    Object.findOne(Query)
+    .then((data) => {
+        res.json(data)
+    })
+    .catch((err)=>{
+        console.log(err)
+    })
+})
+
+//update
+router.put('/udpateObject/:id',function (req,res){
+    var updateQuery = { _id: req.params.id }
+    Object.updateOne(updateQuery,{
+        $set :{
+            title : req.body.title,
+            description : req.body.description
+        } 
+    })
+    .then(resData => {
+        res.json(resData)
+    })
+    .catch((err) => {
         console.log(err)
     })
 })

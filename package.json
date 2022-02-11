@@ -4,7 +4,9 @@
   "description": "creatin a simple CRUD project with Express-node-nuxt-bootstrap",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "client" : "cd client && npm run dev",
+    "start": "concurrently -n 'server,client' \"nodemon app.js\" \"npm run client \""
   },
   "repository": {
     "type": "git",
