@@ -3,7 +3,12 @@
     <h1>Create an Object post</h1>
     <div class="mb-3">
       <label for="title" class="form-label">Post Title</label>
-      <input type="text" class="form-control" id="title" placeholder="Please enter the Object name">
+      <input 
+        type="text"
+        id="title"
+        v-model="obj.title"
+        placeholder="Please enter the Object name"
+      />
     </div>
     <div class="mb-3">
       <label for="image" class="form-label">image</label>
@@ -11,20 +16,45 @@
     </div>
     <div class="mb-3">
       <label for="description" class="form-label">add a description</label>
-      <textarea class="form-control" id="description" rows="3"></textarea>
+      <textarea
+      v-model="obj.description"
+      class="form-control" 
+      id="description" 
+      rows="3"
+      ></textarea>
     </div>
     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-      <button type="button" class="btn btn-outline-primary btn-lg">Submit</button>
+      <button type="button" @click = "addObject" class="btn btn-outline-primary btn-lg">Submit</button>
     </div>
   </div>
 </template>
 <script>
-  import Nav from "../layouts/nav.vue";
-  export default{
-      component : {
-          Nav
+import axios from "axios";
+export default {
+  data() {
+    return {
+      obj: {
+        title: "Your post Title",
+        description: "Your description"
       }
-  }
+    };
+  },
+  methods: {
+    
+    async addObject() {
+      await axios
+        .post("http://localhost:8080/postObject", this.obj)
+        .then(res => {
+          console.log(res);
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
+    
+  },
+  
+};
 </script>
 <style scoped>
   .objectPostDesign {
