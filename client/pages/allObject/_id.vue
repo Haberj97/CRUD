@@ -2,22 +2,24 @@
   <div class="container card objectPostDesign">
     <h1>Edit an Object post</h1>
     <div class="mb-3">
-      <label for="title" class="form-label">Post Title</label>
+      <label for="title" class="form-label">Post Title</label><br>
       <input 
         type="text"
         id="title"
-        v-model="obj.title"
+        v-model="title"
         placeholder="Please enter the title"
       />
     </div>
     <div class="mb-3">
       <label for="image" class="form-label">image</label>
-      <input class="form-control" type="file" id="image">
+      <input class="form-control" type="file" @change="onFileSelected" name="image" id="image">
+      <h5>Old image preview</h5>
+      <img :src="image" class="card-img-top" alt="image"/>
     </div>
     <div class="mb-3">
       <label for="description" class="form-label">add a description</label>
       <textarea
-      v-model="obj.description"
+      v-model="description"
       class="form-control" 
       id="description" 
       rows="3"
@@ -40,16 +42,25 @@ const update = "http://localhost:8080/udpateObject/"
 export default {
   data() {
     return {
-      obj: {
-        title : "",
-        description :  ""
-      }
+      title: "",
+      description: "",
+      FILE : null ,
+      image: ""
     };
   },
   methods: {
+    onFileSelected(event){
+      this.FILE = event.target.files[0]
+    },
     async update() {
+      const fd = new FormData();
+      if(this.FILE != null){
+        fd.append('image',this.FILE,this.FILE.name)
+      }
+      fd.append('title',this.title)
+      fd.append('description',this.description)
       await axios
-      .put(update + this.$route.params.id, this.obj)
+      .put(update + this.$route.params.id, fd)
       .then(res => {
         console.log(res);
       })
@@ -60,7 +71,10 @@ export default {
   },
   async mounted(){
       const result = await axios.get(getUpdateData + this.$route.params.id);
-      this.obj = result.data;
+      this.title = result.data.title;
+      this.description = result.data.description;
+      this.image = result.data.image;
+
   }
 };
 </script>

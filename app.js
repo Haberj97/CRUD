@@ -9,15 +9,23 @@ const app = express()
 const PORT = 8080 
 const bodyParser = require('body-parser')
 const cors = require('cors')
+
+
 //importation
 
 require('./models/DataBase')
 
-app.use(cors())
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({extended: true}))
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+  extended: false
+}));
+
+app.use(cors());
+
+app.use('/uploads', express.static('uploads'));
 // routes importations 
 app.use(require('./routes/ObjectRoutes'))
+
 
 //Function Section 
 app.listen(PORT, function(req, res) {

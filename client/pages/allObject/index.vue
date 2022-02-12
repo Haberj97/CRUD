@@ -15,7 +15,7 @@
         <div class="catalog">
             <div class = "eachObject" v-for="objData in obj" :key="objData.id">
                 <div class="card" style="width: 18rem;">
-                    <img src="" class="card-img-top" alt="image">
+                    <img :src="objData.image" class="card-img-top" alt="image">
                     <div class="card-body body_card">
                         <h5 class="card-title">{{objData.title}}</h5>
                         <p class="card-text" >{{objData.description.substring(0, 100)}}</p>
