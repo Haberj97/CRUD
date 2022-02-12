@@ -1,8 +1,8 @@
 <template>
   <div class="container card objectPostDesign">
-    <h1>Edit an Object post</h1>
+    <h1>Edit Object</h1>
     <div class="mb-3">
-      <label for="title" class="form-label">Post Title</label><br>
+      <label for="title" class="form-label">Object Title</label><br>
       <input 
         type="text"
         id="title"
@@ -17,7 +17,7 @@
       <img :src="image" class="card-img-top" alt="image"/>
     </div>
     <div class="mb-3">
-      <label for="description" class="form-label">add a description</label>
+      <label for="description" class="form-label">description</label>
       <textarea
       v-model="description"
       class="form-control" 

@@ -1,8 +1,8 @@
 <template>
     <div class="container card objectPostDesign">
-      <h1>Create an Object post</h1>
+      <h1>Create Object</h1>
       <div class="mb-3">
-        <label for="title" class="form-label">Post Title</label>
+        <label for="title" class="form-label">Object Title</label>
         <input 
           type="text"
           id="title"
@@ -15,7 +15,7 @@
         <input class="form-control" type="file" @change="onFileSelected" name="image" id="image">
       </div>
       <div class="mb-3">
-        <label for="description" class="form-label">add a description</label>
+        <label for="description" class="form-label">description</label>
         <textarea
         v-model="description"
         class="form-control" 
