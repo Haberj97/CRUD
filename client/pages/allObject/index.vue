@@ -88,11 +88,13 @@ export default{
     display: flex;
     align-items: justify;
     border-radius: 15px;
+    transition: 0.2s;
 }
 .eachObject:hover {
-  cursor: pointer;
-  -webkit-box-shadow: 3px 10px 15px -1px rgba(0, 0, 0, 0.46);
-  box-shadow: 3px 10px 15px -1px rgba(0, 0, 0, 0.46);
+    height: 402px;
+    cursor: pointer;
+    -webkit-box-shadow: 3px 10px 15px -1px rgba(0, 0, 0, 0.46);
+    box-shadow: 3px 10px 15px -1px rgba(27, 27, 27, 0.46);
 }
 .catalog {
     display: flex;
